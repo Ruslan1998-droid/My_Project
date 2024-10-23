@@ -6,30 +6,55 @@ public class Mainc {
         if (y.contains("+")) {
             int f = y.indexOf("+");
             String r = y.substring(0, f);
-            String n = y.substring(f);
-            n = n.replace("+", " ");
-            String h = (r + n).replaceAll("\"", "");
-            h = h.replace(" ", "");
-            if (y.contains("+")) {
-                System.out.print("\"" + h + "\"");
+            String l = r.replaceAll("\"", "");
+            l.replaceAll(" ", "");
+            try {
+                char g = l.charAt(0);
+                String b = new String(new char[]{g});
+                int m = (Integer.parseInt(b));
+                System.out.print("\"" + "Неправильный ввод" + "\"");
+
+            } catch (NumberFormatException e) {
+                String n = y.substring(f);
+                if (n.contains("\"")) {
+                    n = n.replace("+", " ");
+                    n = n.replace(" ", "");
+                    n = n.replaceAll("\"", "");
+                    r = r.replaceAll("\"", "");
+                    System.out.print("\"" + (r + n) + "\"");
+                }else{
+                    System.out.print("\"" + "Неправильный ввод" + "\"");
+                }
             }
         }
         if (y.contains("*")) {
             int f = y.indexOf("*");
             String r = y.substring(0, f);
+            String l = r.replaceAll("\"", "");
+            l.replaceAll(" ", "");
             String n = y.substring(f);
             n = n.replace("*", " ");
-            for (int b = 0; b < n.length(); b++) {
-                char currentChar = n.charAt(b);
-                if (Character.isDigit(currentChar)) {
-                    int j = Character.getNumericValue(currentChar);
+            n = n.replace(" ", "");
+            try {
+                char g = l.charAt(0);
+                String b = new String(new char[]{g});
+                int m = (Integer.parseInt(b));
+                System.out.print("\"" + "Неправильный ввод" + "\"");
 
-                    String h = r.repeat(j);
-                    h = h.replaceAll("\"", "");
-                    h = h.replace(" ", "");
-                    if (y.contains("*")) {
-                        System.out.print("\"" + h + "\"");
-                    }
+            } catch (NumberFormatException e) {
+                //System.out.print(n);
+                try {
+                    int s = Integer.parseInt(n);
+                    n = n.replace(" ", "");
+                    n = n.replaceAll("\"", "");
+                    r = r.replaceAll("\"", "");
+                    int p = Integer.parseInt(n);
+                    if (p != 0) {
+                        System.out.print("\"" + r.repeat(p) + "\"");}
+                    else
+                        System.out.print("\"" + "Y" + "\"");
+                }catch (NumberFormatException h){
+                    System.out.print("\"" + "Неправильный ввод" + "\"");
                 }
             }
         }
@@ -74,29 +99,24 @@ public class Mainc {
                 //} else
                 //System.out.print("\"" + r + "\"");
                 //}else
-            }else {
+            } else {
                 y = y.replaceAll("\"", "");
                 //System.out.print(h);
                 int f = y.indexOf("-");
-                int j = y.indexOf(" ");
                 String r = y.substring(0, f);
-                String o = r.substring(0, j);
-                String u = r.substring(j,f);
+                String u = y.substring(f);
+                u = u.replace("-", "");
                 u = u.replace(" ", "");
-                String w = y.substring(f);
-                w = w.replace("-", "");
-                w = w.replace(" ", "");
                 //System.out.print(w);
-                if ((u.equals(w))) {
-                    System.out.print("\"" + o + "\"");
-                }else
-                    System.out.print("\"" + (o + " " + u) + "\"");
+                if ((r.equals(u))) {
+                    System.out.print("\"" + (" ") + "\"");
+                    //}else
+                    //System.out.print("\"" + (o + " " + u) + "\"");
+                }
             }
         }
     }
 }
-
-
 
 
 
